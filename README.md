@@ -2,6 +2,9 @@
 
 - This is the first version so expect bugs.
 
+<img width="2841" height="1749" alt="demo" src="https://github.com/user-attachments/assets/8fe54c8e-f6a5-4932-9043-bdbba016a100" />
+
+
 ## Requirements & Complementary Extensions
 - For **website transparency** (making web pages semi-transparent to show your wallpaper), use the excellent extension:  
   [transparent-zen by frostybiscuit](https://github.com/frostybiscuit/transparent-zen)  
