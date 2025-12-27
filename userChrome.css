@@ -1,0 +1,129 @@
+/* === userChrome.css === */
+
+:root {
+    --tabpanel-background-color: transparent !important;
+    --toolbar-bgcolor: transparent !important;
+    --chrome-background-color: transparent !important;
+    --lwt-toolbar-field-background-color: transparent !important;
+    --newtab-background-color: transparent !important;
+    --newtab-margin: 0px !important;
+}
+
+/* Toolbars transparency + blur */
+#navigator-toolbox,
+#TabsToolbar,
+#titlebar,
+#PersonalToolbar,
+#toolbar-menubar,
+#nav-bar {
+    background: transparent !important;
+    border: none !important;
+    backdrop-filter: blur(20px) !important;
+}
+
+/* Content transparency */
+#tabbrowser-tabpanels,
+#tabbrowser-tabpanels > .deck-selected > .tab-stack > .tab-background,
+browser-container,
+browser {
+    background: transparent !important;
+}
+
+/* Floating pill tabs */
+.tabbrowser-tab {
+    margin: 8px 4px 0 4px !important;
+    max-height: 36px !important;
+}
+
+.tab-stack {
+    border-radius: 18px !important;
+}
+
+.tab-background {
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(16px) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+}
+
+.tabbrowser-tab:hover .tab-background {
+    background: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(20px) !important;
+}
+
+.tabbrowser-tab[selected] .tab-background {
+    background: rgba(255, 255, 255, 0.35) !important;
+    backdrop-filter: blur(24px) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* PINNED TABS - increased glass area to fully contain larger icons */
+.tabbrowser-tab[pinned] {
+    max-width: 56px !important; /* Wider overall */
+    min-width: 56px !important;
+    padding: 0 !important;
+}
+
+.tabbrowser-tab[pinned] .tab-background {
+    width: 48px !important; /* Bigger glass pill */
+    height: 48px !important; /* Taller glass pill - increased area */
+    margin: 0 auto !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.tabbrowser-tab[pinned] .tab-icon-image {
+    width: 24px !important; /* Slightly larger icons */
+    height: 24px !important;
+    margin: 0 !important;
+}
+
+/* URL bar + buttons */
+#nav-bar {
+    padding: 8px 12px !important;
+    background: transparent !important;
+    backdrop-filter: blur(20px) !important;
+}
+
+#urlbar-background,
+#searchbar {
+    background: rgba(255, 255, 255, 0.25) !important;
+    backdrop-filter: blur(24px) !important;
+    border-radius: 20px !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+}
+
+#nav-bar .toolbarbutton-1 {
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(12px) !important;
+    border-radius: 12px !important;
+    margin: 0 4px !important;
+}
+
+/* Bookmarks */
+#PersonalToolbar .toolbarbutton-1 {
+    background: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(16px) !important;
+    border-radius: 16px !important;
+    padding: 4px 12px !important;
+}
+
+/* Menus glossy */
+menupopup,
+panel,
+#urlbar-results,
+.autocomplete-richlistbox,
+.popup-notification {
+    background: rgba(40, 40, 60, 0.92) !important;
+    backdrop-filter: blur(32px) !important;
+    border-radius: 20px !important;
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6) !important;
+}
+
+/* Fallback */
+* {
+    background-color: transparent !important;
+}
