@@ -7,7 +7,16 @@
 
 ## Requirements & Complementary Extensions
 - For **website transparency** (making web pages semi-transparent to show your wallpaper), use the excellent extension:  
-  [transparent-zen by frostybiscuit](https://github.com/frostybiscuit/transparent-zen)  
+  [transparent-zen by frostybiscuit](https://github.com/frostybiscuit/transparent-zen)
+- Additional about:config preferences (required for full transparency effects, especially browser window and tab content transparency on supported systems like Windows 11):
+Go to about:config and set the following to true:
+`browser.tabs.allow_transparent_browser`
+`widget.transparent-windows`
+
+For Mica effects (Windows 11 native blur/transparency in titlebar and UI):
+`widget.windows.mica → true`
+`widget.windows.mica.popups → 2`
+`widget.windows.mica.toplevel-backdrop → 2`
 
 ## Installation Steps
 
