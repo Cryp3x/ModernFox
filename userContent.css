@@ -1,0 +1,124 @@
+/* === userContent.css === */
+/* Fully transparent glassmorphic new tab page - centered top sites only (no search bar) */
+/* Matches glossy floating UI perfectly - pure wallpaper visibility */
+
+@-moz-document url("about:newtab"), url("about:home"), url("about:blank") {
+    /* Full transparency base */
+    body,
+    .outer-wrapper,
+    .search-wrapper,
+    .top-sites-list,
+    .sections,
+    .main-container {
+        background: transparent !important;
+        backdrop-filter: none !important;
+    }
+
+    /* Completely remove the search bar */
+    .search-wrapper,
+    .search-inner-wrapper,
+    .search-hint,
+    .fake-textbox,
+    .searchbar-engine-one-off-item {
+        display: none !important;
+        height: 0 !important;
+        width: 0 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        visibility: hidden !important;
+    }
+
+    /* Centered layout - horizontal center + balanced top spacing (no search bar = less top padding needed) */
+    body {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important; /* Perfect horizontal center */
+        justify-content: flex-start !important;
+        padding: 80px 40px 60px !important; /* Adjust top value if tiles feel too high/low */
+        gap: 40px !important;
+        min-height: 100vh !important;
+    }
+
+    /* Force centering on parent containers */
+    .outer-wrapper,
+    .main-container,
+    .sections {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        width: 100% !important;
+        max-width: 1200px !important;
+        margin: 0 auto !important;
+    }
+
+    /* TOP SITES TILES - dark glossy glass matching your UI */
+    .top-site-outer .tile {
+        background: rgba(255, 255, 255, 0.18) !important;
+        backdrop-filter: blur(20px) !important;
+        border-radius: 20px !important;
+        border: 1px solid rgba(255, 255, 255, 0.25) !important;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35) !important;
+        padding: 16px !important;
+        width: 96px !important;
+        height: 96px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        transition: all 0.3s ease !important;
+    }
+
+    .top-site-outer:hover .tile {
+        background: rgba(255, 255, 255, 0.28) !important;
+        backdrop-filter: blur(26px) !important;
+        transform: translateY(-6px) !important;
+        box-shadow: 0 14px 36px rgba(0, 0, 0, 0.5) !important;
+    }
+
+    /* Icons */
+    .top-site-icon {
+        width: 48px !important;
+        height: 48px !important;
+        border-radius: 50% !important;
+        margin-bottom: 8px !important;
+    }
+
+    /* Titles - clean wrapping, no truncation */
+    .rich-icon + .title,
+    .top-site-title {
+        color: rgba(255, 255, 255, 0.92) !important;
+        text-shadow: 0 1px 4px rgba(0, 0, 0, 0.8) !important;
+        font-size: 12px !important;
+        line-height: 1.4 !important;
+        text-align: center !important;
+        max-width: 90px !important;
+        word-wrap: break-word !important;
+    }
+
+    /* Grid - perfectly centered and responsive */
+    .top-sites-list {
+        display: grid !important;
+        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)) !important;
+        gap: 20px !important;
+        max-width: 1000px !important;
+        width: 95% !important;
+        justify-items: center !important;
+        margin: 0 auto !important;
+    }
+
+    /* Hide all other sections (recent activity, highlights, etc.) */
+    .sections > section:not(.top-sites-section) {
+        display: none !important;
+    }
+
+    /* Subtle full-page cohesion tint/blur */
+    body::before {
+        content: "" !important;
+        position: fixed !important;
+        inset: 0 !important;
+        background: rgba(0, 0, 0, 0.08) !important;
+        backdrop-filter: blur(0.5px) !important;
+        pointer-events: none !important;
+        z-index: -1 !important;
+    }
+}
