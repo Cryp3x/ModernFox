@@ -2,7 +2,8 @@
 
 - This is the first version so expect bugs.
 
-<img width="3834" height="1928" alt="Screenshot 2025-12-28 113609" src="https://github.com/user-attachments/assets/ccfb7489-3e54-45dd-a9bc-30350543e46b" />
+
+<img width="3834" height="1928" alt="Screenshot 2025-12-28 113609" src="https://github.com/user-attachments/assets/ce1d17ad-c1b8-4f90-98c4-911c5da9c15b" />
 
 
 ## Requirements & Complementary Extensions
