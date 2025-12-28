@@ -1,4 +1,5 @@
-/* === userChrome.css === */
+/* === Full userChrome.css - Windows 11 Dark Acrylic Style vFinal === */
+/* Complete theme: dark frosted glass, smooth animations, fixed pinned tabs, menu highlights, dialogs styled, URL bar differentiated with accent glow */
 
 :root {
     --tabpanel-background-color: transparent !important;
@@ -7,9 +8,27 @@
     --lwt-toolbar-field-background-color: transparent !important;
     --newtab-background-color: transparent !important;
     --newtab-margin: 0px !important;
+
+    /* Core acrylic colors - dark mode */
+    --acrylic-base: rgba(20, 20, 25, 0.75) !important;
+    --acrylic-hover: rgba(30, 30, 35, 0.85) !important;
+    --acrylic-selected: rgba(45, 45, 55, 0.9) !important;
+    --acrylic-border: rgba(255, 255, 255, 0.1) !important;
+
+    /* Menu & dropdown highlight */
+    --menu-highlight-bg: rgba(60, 60, 80, 0.8) !important;
+    --menu-highlight-blur: blur(20px) !important;
+
+    /* URL bar accent (Windows 11 blue glow) */
+    --urlbar-accent: rgba(80, 120, 255, 0.3) !important;
+    --urlbar-accent-hover: rgba(100, 150, 255, 0.5) !important;
+    --urlbar-accent-focus: rgba(120, 180, 255, 0.8) !important;
+
+    /* Animation timing */
+    --transition-time: 0.35s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
 }
 
-/* Toolbars transparency + blur */
+/* Toolbars - transparency + blur */
 #navigator-toolbox,
 #TabsToolbar,
 #titlebar,
@@ -18,112 +37,285 @@
 #nav-bar {
     background: transparent !important;
     border: none !important;
+    backdrop-filter: blur(28px) !important;
+    transition: backdrop-filter var(--transition-time) !important;
+}
+
+/* Toolbar buttons background */
+#nav-bar toolbarbutton {
+    background: transparent !important;
     backdrop-filter: blur(20px) !important;
+    border-radius: 8px !important;
+    border: 1px solid var(--acrylic-border) !important;
+    transition: background var(--transition-time) !important;
+}
+
+#nav-bar toolbarbutton:hover {
+    background: var(--acrylic-base) !important;
+}
+
+/* URL bar background */
+#urlbar,
+#urlbar-background,
+#urlbar-input-container {
+    background: transparent !important;
+    backdrop-filter: blur(20px) !important;
+    border-radius: 8px !important;
+    border: 1px solid var(--acrylic-border) !important;
+    transition: background var(--transition-time) !important;
+}
+
+#urlbar:hover,
+#urlbar-background:hover,
+#urlbar-input-container:hover {
+    background: var(--acrylic-base) !important;
+}
+
+/* Account button hover */
+#fxa-toolbar-menu-button:hover,
+#userContext-indicator:hover {
+    background: var(--acrylic-hover) !important;
+    backdrop-filter: blur(20px) !important;
+    border-radius: 8px !important;
+}
+
+/* Titlebar buttons - minimize, maximize, close */
+#titlebar-min,
+#titlebar-max,
+#titlebar-close {
+    background: transparent !important;
+    border-radius: 4px !important;
+    transition: background var(--transition-time) !important;
+}
+
+#titlebar-min:hover,
+#titlebar-max:hover {
+    background: rgba(255, 255, 255, 0.1) !important;
+}
+
+#titlebar-close:hover {
+    background: rgba(232, 17, 35, 0.6) !important;
+    /* Subtle red for close */
 }
 
 /* Content transparency */
 #tabbrowser-tabpanels,
-#tabbrowser-tabpanels > .deck-selected > .tab-stack > .tab-background,
-browser-container,
 browser {
     background: transparent !important;
 }
 
-/* Floating pill tabs */
+/* Floating pill tabs with smooth animations */
 .tabbrowser-tab {
     margin: 8px 4px 0 4px !important;
-    max-height: 36px !important;
+    max-height: 40px !important;
+    transition: all var(--transition-time) !important;
 }
 
 .tab-stack {
-    border-radius: 18px !important;
+    border-radius: 22px !important;
+    transition: border-radius var(--transition-time) !important;
 }
 
 .tab-background {
-    background: rgba(255, 255, 255, 0.15) !important;
-    backdrop-filter: blur(16px) !important;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    background: var(--acrylic-base) !important;
+    backdrop-filter: blur(20px) !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
+    border: 1px solid var(--acrylic-border) !important;
+    transition:
+        background var(--transition-time),
+        backdrop-filter var(--transition-time),
+        box-shadow var(--transition-time) !important;
 }
 
 .tabbrowser-tab:hover .tab-background {
-    background: rgba(255, 255, 255, 0.25) !important;
-    backdrop-filter: blur(20px) !important;
+    background: var(--acrylic-hover) !important;
+    backdrop-filter: blur(26px) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45) !important;
 }
 
 .tabbrowser-tab[selected] .tab-background {
-    background: rgba(255, 255, 255, 0.35) !important;
-    backdrop-filter: blur(24px) !important;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4) !important;
+    background: var(--acrylic-selected) !important;
+    backdrop-filter: blur(30px) !important;
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.55) !important;
 }
 
-/* PINNED TABS - increased glass area to fully contain larger icons */
+/* Pinned tabs - fully fixed, no clipping */
 .tabbrowser-tab[pinned] {
-    max-width: 56px !important; /* Wider overall */
-    min-width: 56px !important;
+    max-width: 72px !important;
+    min-width: 72px !important;
     padding: 0 !important;
+    transition: all var(--transition-time) !important;
+}
+
+.tabbrowser-tab[pinned] .tab-stack {
+    width: 100% !important;
+    height: 100% !important;
 }
 
 .tabbrowser-tab[pinned] .tab-background {
-    width: 48px !important; /* Bigger glass pill */
-    height: 48px !important; /* Taller glass pill - increased area */
-    margin: 0 auto !important;
+    width: 64px !important;
+    height: 64px !important;
+    margin: 4px auto !important;
+    border-radius: 24px !important;
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
 }
 
 .tabbrowser-tab[pinned] .tab-icon-image {
-    width: 24px !important; /* Slightly larger icons */
-    height: 24px !important;
+    width: 36px !important;
+    height: 36px !important;
+    max-width: none !important;
+    max-height: none !important;
     margin: 0 !important;
+    padding: 0 !important;
 }
 
-/* URL bar + buttons */
+/* URL bar - differentiated with accent glow (extra !important for force-apply) */
+#urlbar-container {
+    height: 50px !important;
+    margin: 0 12px !important;
+    border-radius: 28px !important;
+}
+
 #nav-bar {
-    padding: 8px 12px !important;
+    padding: 12px 24px !important;
     background: transparent !important;
-    backdrop-filter: blur(20px) !important;
+    backdrop-filter: blur(28px) !important;
 }
 
-#urlbar-background,
-#searchbar {
-    background: rgba(255, 255, 255, 0.25) !important;
-    backdrop-filter: blur(24px) !important;
-    border-radius: 20px !important;
-    border: 1px solid rgba(255, 255, 255, 0.3) !important;
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3) !important;
+#urlbar-background {
+    background: rgba(20, 20, 25, 0.78) !important;
+    backdrop-filter: blur(32px) !important;
+    border-radius: 28px !important;
+    border: 1px solid var(--urlbar-accent) !important;
+    box-shadow:
+        0 8px 28px rgba(0, 0, 0, 0.5),
+        inset 0 0 20px rgba(80, 120, 255, 0.25) !important;
+    height: 50px !important;
+    transition: all var(--transition-time) !important;
 }
 
+#urlbar-background:hover,
+#urlbar-background:focus-within {
+    background: rgba(30, 30, 35, 0.88) !important;
+    backdrop-filter: blur(36px) !important;
+    border: 1px solid var(--urlbar-accent-focus) !important;
+    box-shadow:
+        0 16px 50px rgba(0, 0, 0, 0.7),
+        0 0 32px rgba(120, 180, 255, 0.7),
+        inset 0 0 30px rgba(120, 180, 255, 0.6) !important;
+    transform: scale(1.02) !important;
+}
+
+#urlbar-input {
+    color: rgba(255, 255, 255, 0.98) !important;
+    font-size: 15px !important;
+}
+
+/* Navigation buttons */
 #nav-bar .toolbarbutton-1 {
-    background: rgba(255, 255, 255, 0.15) !important;
-    backdrop-filter: blur(12px) !important;
-    border-radius: 12px !important;
-    margin: 0 4px !important;
+    background: rgba(30, 30, 35, 0.6) !important;
+    backdrop-filter: blur(18px) !important;
+    border-radius: 16px !important;
+    margin: 0 8px !important;
+    padding: 10px !important;
+    transition: all var(--transition-time) !important;
+}
+
+#nav-bar .toolbarbutton-1:hover {
+    background: var(--acrylic-hover) !important;
 }
 
 /* Bookmarks */
 #PersonalToolbar .toolbarbutton-1 {
-    background: rgba(255, 255, 255, 0.2) !important;
-    backdrop-filter: blur(16px) !important;
-    border-radius: 16px !important;
-    padding: 4px 12px !important;
+    background: var(--acrylic-base) !important;
+    backdrop-filter: blur(22px) !important;
+    border-radius: 20px !important;
+    padding: 8px 16px !important;
+    margin: 6px !important;
+    transition: all var(--transition-time) !important;
 }
 
-/* Menus glossy */
+/* Menus, popups, autocomplete - dark acrylic with hover highlight */
 menupopup,
 panel,
+#widget-overflow-panel,
 #urlbar-results,
+#PopupAutoCompleteRichResult,
+.popup-notification,
 .autocomplete-richlistbox,
-.popup-notification {
-    background: rgba(40, 40, 60, 0.92) !important;
-    backdrop-filter: blur(32px) !important;
-    border-radius: 20px !important;
-    border: 1px solid rgba(255, 255, 255, 0.2) !important;
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6) !important;
+.context-menu {
+    background: rgba(22, 22, 28, 0.94) !important;
+    backdrop-filter: blur(36px) !important;
+    border-radius: 22px !important;
+    border: 1px solid var(--acrylic-border) !important;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8) !important;
+    transition: all var(--transition-time) !important;
 }
 
-/* Fallback */
+/* URL Dropdown hover/selected */
+.urlbarView-row:hover>.urlbarView-row-inner,
+.urlbarView-row[selected]>.urlbarView-row-inner {
+    background: var(--menu-highlight-bg) !important;
+    backdrop-filter: var(--menu-highlight-blur) !important;
+    border-radius: 16px !important;
+    transition: all var(--transition-time) !important;
+}
+
+/* Application Menu & other menus hover */
+#appMenu-popup .subviewbutton:hover,
+#appMenu-popup toolbarbutton.subviewbutton:hover,
+menupopup>menuitem:hover,
+menupopup>menu[_moz-menuactive="true"]:not([disabled="true"]),
+menuitem[_moz-menuactive="true"]:not([disabled="true"]) {
+    background: var(--menu-highlight-bg) !important;
+    backdrop-filter: var(--menu-highlight-blur) !important;
+    border-radius: 14px !important;
+    transition: all var(--transition-time) !important;
+}
+
+/* Dialogs, file pickers, notifications */
+dialog,
+#commonDialog,
+.fileDialog,
+.notificationbox,
+.modalDialog {
+    background: rgba(20, 20, 25, 0.9) !important;
+    backdrop-filter: blur(32px) !important;
+    border-radius: 20px !important;
+    border: 1px solid var(--acrylic-border) !important;
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.7) !important;
+}
+
+dialog button,
+#commonDialog button {
+    background: var(--acrylic-base) !important;
+    backdrop-filter: blur(20px) !important;
+    border-radius: 16px !important;
+    transition: all var(--transition-time) !important;
+}
+
+dialog button:hover,
+#commonDialog button:hover {
+    background: var(--acrylic-hover) !important;
+}
+
+.notificationbox-stack,
+.toast-notification {
+    background: rgba(25, 25, 30, 0.92) !important;
+    backdrop-filter: blur(32px) !important;
+    border-radius: 20px !important;
+}
+
+/* Sidebar (if used) */
+#sidebar-box,
+#sidebar {
+    background: transparent !important;
+    backdrop-filter: blur(24px) !important;
+}
+
+/* Fallback transparency */
 * {
     background-color: transparent !important;
 }
